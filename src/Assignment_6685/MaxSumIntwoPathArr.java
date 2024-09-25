@@ -30,7 +30,7 @@ public class MaxSumIntwoPathArr {
                     sum2 += arr2[j];
                     j++;
                 } else {
-                    totalsum = Math.max(sum2, sum1) + arr2[j];
+                    totalsum += Math.max(sum2, sum1) + arr2[j];
                     i++;
                     j++;
                     sum2 = 0;
