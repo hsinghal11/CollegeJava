@@ -1,40 +1,40 @@
 import java.util.*;
+
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int number = n;
-        int star = 2*n+1;
-        int row = 1;
-        int space = 0;
-        while(row <= 2*n+1){
-            int i = 1;
-            while(i <= space){
-                System.out.print(" \t");
+        int t = sc.nextInt();
+        sc.nextLine();
+        while(t-->0){
+            String original = sc.nextLine();
+            String given = sc.nextLine();
+//            System.out.println(original+" "+given);
+            if(solve(original,given)) System.out.println("yes");
+            else System.out.println("no");
+        }
+    }
+    private static boolean solve(String o, String g){
+        int i = 0;
+        int j = 0;
+
+        int n1 = o.length();
+        int n2 = g.length();
+        while(i<n1 && j<n2) {
+            if(o.charAt(i) != g.charAt(j)) return false;
+            int countcrr = 0;
+            int countlrr = 0;
+            char c = o.charAt(i);
+            while (i<n1 && o.charAt(i) == c){
                 i++;
+                countcrr++;
             }
-            int j = 1;
-            while(j <= star){
-                System.out.print(number+"\t");
-                if(j==star) {
-                    break;
-                }
-                else if(j > star/2) number++;
-                else number--;
+            while (j<n2 && g.charAt(j) == c){
                 j++;
+                countlrr++;
             }
 
-            System.out.println();
-            if(row > n){
-                number++;
-                space--;
-                star+=2;
-            } else {
-                number--;
-                space++;
-                star-=2;
-            }
-            row++;
+            if(2*(countcrr) < countlrr || countlrr<countcrr ) return false;
         }
+        return (i==n1 && j==n2);
     }
 }
