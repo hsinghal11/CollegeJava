@@ -1,3 +1,5 @@
+package Contests.Div3_1043;
+
 import java.util.*;
 
 public class Main {
